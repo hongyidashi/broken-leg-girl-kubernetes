@@ -4,7 +4,7 @@
   &emsp;&emsp;断腿少女kubernetes版
 
 #### 软件架构
-软件架构说明
+
   &emsp;&emsp;基于kubernetes的微服务架构
 
 
