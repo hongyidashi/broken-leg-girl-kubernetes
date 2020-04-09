@@ -6,10 +6,15 @@
 
     <groupId>com.blg</groupId>
     <artifactId>broken-leg-girl-kubernetes</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>broken-leg-girl-framework</module>
+        <module>app-demo-datasource</module>
+    </modules>
 
     <properties>
-        <blg.version>0.0.1-SNAPSHOT</blg.version>
+        <blg.version>1.0-SNAPSHOT</blg.version>
 
         <poi.version>4.1.1</poi.version>
         <log4j.version>2.12.1</log4j.version>
@@ -32,6 +37,11 @@
     <!-- 预定义依赖项的version,scope与exclusions,子项目中只需定义groupId和artifactId 即可 -->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.blg</groupId>
+                <artifactId>broken-leg-girl-framework</artifactId>
+                <version>${blg.version}</version>
+            </dependency>
             <!-- 开发支持开始 -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
@@ -178,6 +188,12 @@
                 <version>${spring-cloud-kubernetes.version}</version>
             </dependency>
             <!-- spring-cloud-kubernetes结束 -->
+            <!--     mq支持       -->
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-amqp</artifactId>
+                <version>2.2.1.RELEASE</version>
+            </dependency>
             <!-- 糊涂工具包 -->
             <dependency>
                 <groupId>cn.hutool</groupId>

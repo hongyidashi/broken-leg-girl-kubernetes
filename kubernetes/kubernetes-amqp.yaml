@@ -1,0 +1,73 @@
+# amqp开始
+# 声明一个PVC卷
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: blg
+  name: amqp-pvc
+spec:
+  storageClassName: hostpath
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 0.5Gi
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: blg
+  name: amqp
+  labels:
+    com.blg.service: amqp
+spec:
+  containers:
+  - image: rabbitmq:management
+    imagePullPolicy: IfNotPresent
+    name: amqp
+    lifecycle:
+      postStart:
+        exec:
+          command: ["/bin/sh", "-c", "rabbitmq-plugins enable rabbitmq_web_stomp rabbitmq_stomp"]
+    ports:
+    - containerPort: 5672
+    - containerPort: 15672
+    - containerPort: 15674
+    resources:
+      limits:
+        memory: 0.5Gi
+    volumeMounts:
+    - mountPath: /var/lib/rabbitmq
+      name: amqp-pvc
+  restartPolicy: OnFailure
+  volumes:
+  - name: amqp-pvc
+    persistentVolumeClaim:
+      claimName: amqp-pvc
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: blg
+  name: amqp
+  labels:
+    com.blg.service: amqp
+spec:
+  type: NodePort
+  ports:
+  - name: "5672"
+    port: 5672
+    targetPort: 5672
+    nodePort: 30120
+  - name: "15672"
+    port: 15672
+    targetPort: 15672
+    nodePort: 30121
+  - name: "15674"
+    port: 15674
+    targetPort: 15674
+    nodePort: 30122
+  selector:
+    com.blg.service: amqp
