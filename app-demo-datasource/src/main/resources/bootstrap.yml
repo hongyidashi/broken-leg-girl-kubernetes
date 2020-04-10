@@ -8,7 +8,7 @@ management:
       enabled: true
 spring:
   application:
-    name: app-demo-datasource
+    name: demo-datasource
   cloud:
     kubernetes:
       reload:

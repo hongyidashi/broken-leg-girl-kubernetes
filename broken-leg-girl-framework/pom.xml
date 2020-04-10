@@ -12,6 +12,12 @@
     <artifactId>broken-leg-girl-framework</artifactId>
 
     <dependencies>
+        <!-- spring-cloud-kubernetes开始 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-kubernetes-all</artifactId>
+        </dependency>
+        <!-- spring-cloud-kubernetes结束 -->
         <!-- 分页插件开始 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -20,6 +26,14 @@
         </dependency>
         <!-- 分页插件结束 -->
         <!-- starter开始 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -68,6 +82,10 @@
         </dependency>
         <!-- MySQL连接结束 -->
         <!-- hibernate支持开始-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.jpaquery</groupId>
             <artifactId>jpaquery</artifactId>

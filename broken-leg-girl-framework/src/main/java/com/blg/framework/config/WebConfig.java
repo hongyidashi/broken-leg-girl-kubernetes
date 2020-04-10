@@ -1,6 +1,7 @@
 package com.blg.framework.config;
 
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.springframework.boot.actuate.endpoint.http.ActuatorMediaType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
@@ -87,6 +88,8 @@ public class WebConfig implements WebMvcConfigurer {
         supportedMediaTypes.add(MediaType.TEXT_MARKDOWN);
         supportedMediaTypes.add(MediaType.TEXT_PLAIN);
         supportedMediaTypes.add(MediaType.TEXT_XML);
+        supportedMediaTypes.add(MediaType.valueOf(ActuatorMediaType.V2_JSON));
+        supportedMediaTypes.add(MediaType.valueOf(ActuatorMediaType.V3_JSON));
         fastConverter.setSupportedMediaTypes(supportedMediaTypes);
         converters.add(stringConverter());
         converters.add(fastConverter);
