@@ -15,6 +15,7 @@ import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.nio.charset.StandardCharsets;
@@ -96,4 +97,20 @@ public class WebConfig implements WebMvcConfigurer {
     }
     //---------------------中文乱码解决---------------------
 
+    /**
+     * 解决swagger-ui访问404的问题
+     * 如果继承了WebMvcConfigurationSupport
+     * 则在配置文件在中配置的相关内容会失效，需要重新指定静态资源
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").addResourceLocations(
+                "classpath:/static/");
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations(
+                "classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations(
+                "classpath:/META-INF/resources/webjars/");
+        WebMvcConfigurer.super.addResourceHandlers(registry);
+    }
 }
