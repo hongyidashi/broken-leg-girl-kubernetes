@@ -219,6 +219,7 @@
                         <showWarnings>true</showWarnings>
                     </configuration>
                 </plugin>
+                <!--spring-boot-maven-plugin 提供了一些像 jar 一样打包或者运行应用程序的命令。-->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
