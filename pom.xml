@@ -13,6 +13,7 @@
         <module>app-demo-datasource</module>
         <module>app-api</module>
         <module>app-gateway</module>
+        <module>app-security</module>
     </modules>
 
     <properties>
@@ -42,6 +43,11 @@
             <dependency>
                 <groupId>com.blg</groupId>
                 <artifactId>broken-leg-girl-framework</artifactId>
+                <version>${blg.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.blg</groupId>
+                <artifactId>app-api</artifactId>
                 <version>${blg.version}</version>
             </dependency>
             <!-- 开发支持开始 -->

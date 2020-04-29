@@ -9,20 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>app-api</artifactId>
+    <artifactId>app-security</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.blg</groupId>
             <artifactId>broken-leg-girl-framework</artifactId>
         </dependency>
-
-        <!--权限工具依赖-->
         <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
+            <groupId>com.blg</groupId>
+            <artifactId>app-api</artifactId>
         </dependency>
-
     </dependencies>
 </project>
