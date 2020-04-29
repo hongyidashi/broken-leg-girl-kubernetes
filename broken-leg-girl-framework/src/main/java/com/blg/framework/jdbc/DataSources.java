@@ -38,7 +38,7 @@ public class DataSources {
                                     boolean isAutoCommit = true;
                                     {
                                         // 初始化
-                                        currentConnectionHolder = new ThreadLocal<Connection>();
+                                        currentConnectionHolder = new ThreadLocal<>();
                                         masterConnection = (Connection) method.invoke(master,args);
                                         if(slaves!=null && slaves.length>0){
                                             slaveConnection = tryGetSlaveConnection(method, args, slaves);
@@ -121,14 +121,13 @@ public class DataSources {
                                     }
 
                                     private Connection getCurrentConnection() throws SQLException {
-                                        Connection connection = currentConnectionHolder.get();
-                                        return connection;
+                                        return currentConnectionHolder.get();
                                     }
 
                                     private void useMaster(ThreadLocal<Connection> currentConnectionHolder, Connection masterConnection,Object[] args) throws SQLException {
                                         if(args!=null){
                                             for(Object arg:args){
-                                                if(arg!=null && arg instanceof String){
+                                                if(arg instanceof String){
                                                     String sql = ((String) arg).toLowerCase();
                                                     if(sql.contains("update ")
                                                             ||sql.contains("insert ")
@@ -156,8 +155,7 @@ public class DataSources {
     }
 
     private static Connection tryGetSlaveConnection(Method method, Object[] args, DataSource[] slaves) throws IllegalAccessException, InvocationTargetException {
-        Connection slaveConnection = (Connection) method.invoke(slaves[new Random().nextInt(slaves.length)],args);
-        return slaveConnection;
+        return (Connection) method.invoke(slaves[new Random().nextInt(slaves.length)],args);
     }
 
     /**

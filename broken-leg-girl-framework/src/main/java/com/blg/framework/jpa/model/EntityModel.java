@@ -35,6 +35,7 @@ public class EntityModel extends Model {
 
     @PrePersist
     public void init() {
+        //为啥InnoDB用UUDI而不采用整型自增主键
         if (id == null) {
             this.id = UUID.randomUUID().toString();
         }
