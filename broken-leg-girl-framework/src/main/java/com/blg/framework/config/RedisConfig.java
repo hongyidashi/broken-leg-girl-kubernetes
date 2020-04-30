@@ -17,9 +17,9 @@ import org.springframework.data.redis.serializer.SerializationException;
 import java.io.Serializable;
 
 /**
+ * Redis配置类
  * @Auther: panhongtong
  * @Date: 2020/4/2 10:51
- * @Description: Redis配置
  */
 @Configuration
 public class RedisConfig {

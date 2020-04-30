@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * web配置类，处理了跨域问题、中文乱码、swagger-ui访问404的问题
+ */
 @Configuration
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {

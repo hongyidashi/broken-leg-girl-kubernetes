@@ -12,6 +12,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static com.blg.framework.config.Constants.APP_BASE_PACKAGE;
 
+/**
+ * Swagger2配置类
+ */
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {

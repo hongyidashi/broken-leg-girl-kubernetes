@@ -1,7 +1,7 @@
 package com.blg.api.base;
 
 /**
- * @description: 自定义相应状态码
+ * 自定义相应状态码
  * @author: panhongtong
  * @create: 2020-04-29 21:34
  **/

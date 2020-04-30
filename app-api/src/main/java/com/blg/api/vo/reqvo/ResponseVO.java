@@ -4,14 +4,16 @@ import com.blg.api.base.ResponseCode;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
+ * 响应VO
  * @author: panhongtong
  * @create: 2020-04-29 23:14
- * @description: 响应VO
  **/
 @Data
 @NoArgsConstructor
-public class ResponseVO {
+public class ResponseVO implements Serializable {
     private int code = 200;
     private String message = "";
     private Object data;

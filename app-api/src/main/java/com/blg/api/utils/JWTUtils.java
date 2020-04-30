@@ -15,7 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @description: JWT工具栏，用于微服务间的token处理
+ * JWT工具栏，用于微服务间的token处理
  * @author: panhongtong
  * @create: 2020-04-29 21:31
  **/

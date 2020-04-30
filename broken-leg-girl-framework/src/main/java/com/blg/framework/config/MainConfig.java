@@ -29,9 +29,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
+ * 主配置类
  * @Auther: panhongtong
  * @Date: 2020/4/1 09:02
- * @Description:
  */
 @Configuration
 //配置了扫描hibernate实体和repository的路径

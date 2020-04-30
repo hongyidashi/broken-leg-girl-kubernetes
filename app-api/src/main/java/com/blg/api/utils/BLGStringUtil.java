@@ -3,9 +3,9 @@ package com.blg.api.utils;
 import java.net.URL;
 
 /**
+ * 自定义StringUtil
  * @author: panhongtong
  * @create: 2020-04-29 23:05
- * @description: 自定义StringUtil
  **/
 public class BLGStringUtil {
 

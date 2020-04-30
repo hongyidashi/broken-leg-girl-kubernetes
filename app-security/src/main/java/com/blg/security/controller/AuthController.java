@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * 认证控制器
  * @author: panhongtong
  * @create: 2020-04-29 23:00
- * @description: 认证控制器
  **/
 @RestController
 @RequestMapping(value="/oauth")
@@ -22,11 +22,13 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/token")
-    public ResponseVO auth(@RequestBody AuthVO query) throws Exception {
-        if (StringUtils.isBlank(query.getAccessKey()) || StringUtils.isBlank(query.getSecretKey())) {
+    public ResponseVO auth(@RequestBody AuthVO vo) throws Exception {
+        if (StringUtils.isBlank(vo.getAccessKey()) || StringUtils.isBlank(vo.getSecretKey())) {
             return ResponseVO.failByParam("accessKey and secretKey not null");
         }
-        User user = authService.auth(query);
+
+        // TODO 认证逻辑待完善
+        User user = authService.auth(vo);
         if (user == null) {
             return ResponseVO.failByParam("认证失败");
         }
@@ -35,11 +37,13 @@ public class AuthController {
     }
 
     @GetMapping("/token")
-    public ResponseVO oauth(AuthVO query) throws Exception {
-        if (StringUtils.isBlank(query.getAccessKey()) || StringUtils.isBlank(query.getSecretKey())) {
+    public ResponseVO oauth(AuthVO vo) throws Exception {
+        if (StringUtils.isBlank(vo.getAccessKey()) || StringUtils.isBlank(vo.getSecretKey())) {
             return ResponseVO.failByParam("accessKey and secretKey not null");
         }
-        User user = authService.auth(query);
+
+        // TODO 认证逻辑待完善
+        User user = authService.auth(vo);
         if (user == null) {
             return ResponseVO.failByParam("认证失败");
         }

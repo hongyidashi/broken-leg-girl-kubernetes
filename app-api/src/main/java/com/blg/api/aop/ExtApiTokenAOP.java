@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 基于token的防重复提交AOP
+ */
 @Aspect
 @Component
 @Slf4j

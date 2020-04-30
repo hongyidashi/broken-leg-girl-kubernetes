@@ -13,7 +13,7 @@ import java.util.HashMap;
 import javax.crypto.Cipher;
 
 /**
- * @description: RSA加密算法工具类
+ * RSA加密算法工具类
  * @author: panhongtong
  * @create: 2020-04-29 21:38
  **/

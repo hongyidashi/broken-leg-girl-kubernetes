@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
+ * 安全认证用户类
  * @author: panhongtong
  * @create: 2020-04-29 23:09
- * @description: 用户
  **/
 @Data
 @AllArgsConstructor
