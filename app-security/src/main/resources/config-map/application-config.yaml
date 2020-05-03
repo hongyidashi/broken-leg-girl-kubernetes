@@ -31,23 +31,23 @@ data:
           max-file-size: 32MB
           max-request-size: 32MB
       amqp:
-        host: amqp.fawa1988
+        host: amqp.blg
         username: guest
         password: guest
         port: 5672
       redis:
-        host: redis.fawa1988
+        host: redis.blg
         port: 6379
         pool:
           database: 0
       datasource:
         write:
-          jdbc-url: jdbc:mysql://mysqldb.fawa1988:3306/app_security?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=utf8&useFastDateParsing=false&pinGlobalTxToPhysicalConnection=true&serverTimezone=Hongkong
+          jdbc-url: jdbc:mysql://mysqldb.blg:3306/app_security?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=utf8&useFastDateParsing=false&pinGlobalTxToPhysicalConnection=true&serverTimezone=Hongkong
           username: app_security_writer
           password: app_security_writer
           maximum-pool-size: 100
         read:
-          jdbc-url: jdbc:mysql://mysqldb.fawa1988:3306/app_security?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=utf8&useFastDateParsing=false&pinGlobalTxToPhysicalConnection=true&serverTimezone=Hongkong
+          jdbc-url: jdbc:mysql://mysqldb.blg:3306/app_security?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=utf8&useFastDateParsing=false&pinGlobalTxToPhysicalConnection=true&serverTimezone=Hongkong
           username: app_security_reader
           password: app_security_reader
           maximum-pool-size: 100
@@ -115,3 +115,6 @@ data:
             cache:
               use_second_level_cache: false
               use_query_cache: false
+    logging:
+      level:
+        per.lx: DEBUG

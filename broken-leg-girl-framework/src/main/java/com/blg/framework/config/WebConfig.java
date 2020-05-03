@@ -92,6 +92,7 @@ public class WebConfig implements WebMvcConfigurer {
         supportedMediaTypes.add(MediaType.TEXT_MARKDOWN);
         supportedMediaTypes.add(MediaType.TEXT_PLAIN);
         supportedMediaTypes.add(MediaType.TEXT_XML);
+        supportedMediaTypes.add(MediaType.MULTIPART_FORM_DATA);
         supportedMediaTypes.add(MediaType.valueOf(ActuatorMediaType.V2_JSON));
         supportedMediaTypes.add(MediaType.valueOf(ActuatorMediaType.V3_JSON));
         fastConverter.setSupportedMediaTypes(supportedMediaTypes);

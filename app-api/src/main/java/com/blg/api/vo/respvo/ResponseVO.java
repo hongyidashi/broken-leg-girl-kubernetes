@@ -1,4 +1,4 @@
-package com.blg.api.vo.reqvo;
+package com.blg.api.vo.respvo;
 
 import com.blg.api.base.ResponseCode;
 import lombok.Data;

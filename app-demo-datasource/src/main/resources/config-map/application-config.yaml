@@ -22,7 +22,7 @@ data:
             enabled: false
     server:
       # 服务端口
-      port: 8080
+      port: 8088
     spring:
       application:
         name: demo-datasource
@@ -74,7 +74,7 @@ data:
             enabled: false
     server:
       # 服务端口
-      port: 8080
+      port: 15001
     spring:
       profiles: dev
       application:

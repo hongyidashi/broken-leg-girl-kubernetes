@@ -1,13 +1,19 @@
 package com.blg.demo.datasource.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.blg.demo.datasource.AuthUtils;
 import com.blg.demo.datasource.service.DatasourceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -44,5 +50,18 @@ public class DatasourceController {
         }
         System.err.println(ac.addAndGet(1));
         return "执行成功--->" + ac.get();
+    }
+
+    @GetMapping("/product/{id}")
+    public String getProduct(@PathVariable String id, HttpServletRequest req) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("用户名  : " + JSON.toJSONString(authentication.getPrincipal()));
+        System.out.println("封装的传递信息  : " + AuthUtils.getReqUser(req));
+        return "(Need Auth Request)product id : " + id;
+    }
+
+    @GetMapping("/order/{id}")
+    public String getOrder(@PathVariable String id) {
+        return "(No Auth Request)order id : " + id;
     }
 }
