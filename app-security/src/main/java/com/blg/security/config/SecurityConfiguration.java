@@ -28,10 +28,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public static PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
-    // 请配置这个，以保证在刷新Token时能成功刷新
+    /**
+     * 配置这个，以保证在刷新Token时能成功刷新
+     */
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
         // 配置用户来源于数据库
@@ -39,7 +41,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());
     }
 
-
+    /**
+     * 使用密码模式要配
+     */
     @Bean
     @Override
     protected UserDetailsService userDetailsService() {
@@ -72,10 +76,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     * 安全拦截机制
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
-        http.requestMatchers().anyRequest().and().authorizeRequests().antMatchers("/oauth/**").permitAll();
+        http.csrf().disable()
+                .requestMatchers()
+                .anyRequest()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/oauth/**").permitAll()
+                .antMatchers("/login/*").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+        ;
         // @formatter:on
     }
 
