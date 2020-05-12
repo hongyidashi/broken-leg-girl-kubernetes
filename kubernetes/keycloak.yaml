@@ -1,0 +1,68 @@
+# Keycloak开始
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  namespace: blg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      com.blg.service: keycloak
+  template:
+    metadata:
+      labels:
+        com.blg.service: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: jboss/keycloak
+          env:
+            - name: KEYCLOAK_USER
+              value: "admin"
+            - name: KEYCLOAK_PASSWORD
+              value: "admin"
+            - name: PROXY_ADDRESS_FORWARDING
+              value: "true"
+            - name: DB_VENDOR
+              value: "mysql"
+            - name: DB_ADDR
+              value: "mysqldb"
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_DATABASE
+              value: "keycloak"
+            - name: DB_USER
+              value: "keycloak-writer"
+            - name: DB_PASSWORD
+              value: "keycloak-writer"
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: https
+              containerPort: 8443
+          readinessProbe:
+            httpGet:
+              path: /auth/realms/master
+              port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: blg
+  name: keycloak
+  labels:
+    com.blg.service: keycloak
+spec:
+  type: NodePort
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+    nodePort: 30150
+  - name: "8443"
+    port: 8443
+    targetPort: 8443
+    nodePort: 30151
+  selector:
+    com.blg.service: keycloak

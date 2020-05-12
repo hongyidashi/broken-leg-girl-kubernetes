@@ -1,0 +1,103 @@
+# ES开始
+# 声明一个PVC卷
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: blg
+  name: elasticsearch-pvc
+spec:
+  storageClassName: hostpath
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1.5Gi
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: blg
+  name: elasticsearch
+  labels:
+    com.blg.service: elasticsearch
+spec:
+  containers:
+    - env:
+      - name: discovery.type
+        value: "single-node"
+      image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+      imagePullPolicy: IfNotPresent
+      name: elasticsearch
+      ports:
+        - containerPort: 9200
+        - containerPort: 9300
+      volumeMounts:
+        - mountPath: /usr/share/elasticsearch/data
+          name: elasticsearch-pvc
+  restartPolicy: OnFailure
+  volumes:
+    - name: elasticsearch-pvc
+      persistentVolumeClaim:
+        claimName: elasticsearch-pvc
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: blg
+  name: elasticsearch
+  labels:
+    com.blg.service: elasticsearch
+spec:
+  type: NodePort
+  ports:
+    - name: "9200"
+      port: 9200
+      targetPort: 9200
+      nodePort: 30180
+    - name: "9300"
+      port: 9300
+      targetPort: 9300
+      nodePort: 30181
+  selector:
+    com.blg.service: elasticsearch
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: blg
+  name: kibana
+  labels:
+    com.blg.service: kibana
+spec:
+  containers:
+    - env:
+        - name: ELASTICSEARCH_HOSTS
+          value: "http://elasticsearch:9200"
+        - name: SERVER_NAME
+          value: "kibana"
+      image: docker.elastic.co/kibana/kibana-oss:7.5.1
+      imagePullPolicy: IfNotPresent
+      name: kibana
+      ports:
+        - containerPort: 5601
+  restartPolicy: OnFailure
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: blg
+  name: kibana
+  labels:
+    com.blg.service: kibana
+spec:
+  type: NodePort
+  ports:
+    - name: "5601"
+      port: 5601
+      targetPort: 5601
+      nodePort: 30182
+  selector:
+    com.blg.service: kibana

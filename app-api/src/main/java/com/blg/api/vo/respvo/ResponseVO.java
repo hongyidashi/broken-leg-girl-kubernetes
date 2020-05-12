@@ -1,6 +1,6 @@
 package com.blg.api.vo.respvo;
 
-import com.blg.api.base.ResponseCode;
+import com.blg.api.constant.ResponseCode;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.blg.api.base;
+package com.blg.api.constant;
 
 /**
  * 自定义相应状态码
