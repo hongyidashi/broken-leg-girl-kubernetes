@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class ResponseVO implements Serializable {
-    private int code = 200;
+    private int statusCode = 200;
     private String message = "";
     private Object data;
 
@@ -30,8 +30,8 @@ public class ResponseVO implements Serializable {
         return new ResponseVO(message);
     }
 
-    public static ResponseVO fail(String message, int code) {
-        return new ResponseVO(message, code);
+    public static ResponseVO fail(String message, int statusCode) {
+        return new ResponseVO(message, statusCode);
     }
 
     public static ResponseVO failByParam(String message) {
@@ -48,10 +48,10 @@ public class ResponseVO implements Serializable {
         this.message = message;
     }
 
-    public ResponseVO(String message, int code) {
+    public ResponseVO(String message, int statusCode) {
         super();
         this.message = message;
-        this.code = code;
+        this.statusCode = statusCode;
     }
 
 }
