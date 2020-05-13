@@ -54,7 +54,7 @@ TODO
 
 # 各组件说明
 TODO  
-[app-gateway](https://gitee.com/a1031749665/broken-leg-girl-kubernetes/blob/master/app-gateway/README.md)  
+[app-gateway](https://github.com/hongyidashi/broken-leg-girl-kubernetes/tree/master/app-gateway)  
 
 # 参与贡献
   &emsp;&emsp;断腿少女  
