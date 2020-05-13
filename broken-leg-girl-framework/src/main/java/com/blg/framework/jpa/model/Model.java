@@ -11,7 +11,6 @@ import java.util.Date;
 
 /**
  * 模型基类
- * @author lujijiang
  */
 @MappedSuperclass
 public class Model implements Serializable, Cloneable{
@@ -69,10 +68,12 @@ public class Model implements Serializable, Cloneable{
 
     @PrePersist
     public void init() {
-        if (timestampUpdated == null)
+        if (timestampUpdated == null) {
             this.timestampUpdated = new Date();
-        if (timestampCreated == null)
+        }
+        if (timestampCreated == null) {
             this.timestampCreated = this.timestampUpdated;
+        }
     }
 
     @Override

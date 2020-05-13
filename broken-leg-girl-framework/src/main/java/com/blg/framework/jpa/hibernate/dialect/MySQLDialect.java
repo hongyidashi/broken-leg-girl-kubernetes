@@ -4,7 +4,6 @@ import org.hibernate.dialect.MySQL8Dialect;
 
 /**
  * MYSQL方言
- * @author lujijiang
  */
 public class MySQLDialect extends MySQL8Dialect {
     @Override

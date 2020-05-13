@@ -14,15 +14,14 @@ import java.util.*;
 
 /**
  * 数据源工具类
- * @author lujijiang
  */
 public class DataSources {
 
     static Logger logger = LoggerFactory.getLogger(DataSources.class);
     /**
      * 读写分离数据源，自动根据编码过程中是否有更新来实时的切换数据源
-     * @param master
-     * @param slaves
+     * @param master 主
+     * @param slaves 从
      * @return
      */
     public static DataSource readWriteSeparate(final DataSource master,final DataSource... slaves){

@@ -10,7 +10,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 
 /**
  * 分布式锁切面
- * @author lujijiang
  */
 @Aspect
 public class LockAdvice {

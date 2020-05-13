@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * 方法级分布式锁，默认锁定时间三分钟
- * @author lujijiang
+ * @author panhongtong
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

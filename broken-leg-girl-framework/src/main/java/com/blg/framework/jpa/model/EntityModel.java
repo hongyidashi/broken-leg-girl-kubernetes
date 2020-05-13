@@ -14,7 +14,6 @@ import java.util.UUID;
 
 /**
  * 实体模型
- * @author lujijiang
  */
 @MappedSuperclass
 public class EntityModel extends Model {
@@ -33,9 +32,9 @@ public class EntityModel extends Model {
         this.id = id;
     }
 
+    @Override
     @PrePersist
     public void init() {
-        //为啥InnoDB用UUDI而不采用整型自增主键
         if (id == null) {
             this.id = UUID.randomUUID().toString();
         }
@@ -44,9 +43,18 @@ public class EntityModel extends Model {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        // 判断地址是否相等
+        if (this == o) {
+            return true;
+        }
+        // 为空，或不同类则返回false
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
+        // 通过ID来判断是否为同一个对象
         EntityModel that = (EntityModel) o;
         return Objects.equals(id, that.id);
     }

@@ -24,10 +24,14 @@ import java.io.Serializable;
 @Configuration
 public class RedisConfig {
 
+    /**
+     * 配置redisTemplate
+     */
     @Bean
     @Primary
     public RedisTemplate redisTemplate(RedisConnectionFactory factory) {
         ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+        // 实现序列化接口，保存对象
         RedisSerializer redisSerializer = new RedisSerializer(){
             @Override
             public byte[] serialize(Object o) throws SerializationException {

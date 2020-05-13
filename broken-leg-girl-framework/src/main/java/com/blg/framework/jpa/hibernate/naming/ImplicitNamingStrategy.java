@@ -7,7 +7,6 @@ import org.hibernate.boot.spi.MetadataBuildingContext;
 
 /**
  * 默认名字策略
- * @author lujijiang
  */
 public class ImplicitNamingStrategy extends ImplicitNamingStrategyJpaCompliantImpl {
 
