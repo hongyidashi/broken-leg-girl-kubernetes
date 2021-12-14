@@ -20,7 +20,7 @@
         <blg.version>1.0-SNAPSHOT</blg.version>
 
         <poi.version>4.1.1</poi.version>
-        <log4j.version>2.12.1</log4j.version>
+        <log4j.version>2.16.0</log4j.version>
         <spring.version>5.2.2.RELEASE</spring.version>
         <spring-data.version>2.2.2.RELEASE</spring-data.version>
         <hibernate.version>5.4.9.Final</hibernate.version>
