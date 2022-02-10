@@ -23,7 +23,7 @@
         <log4j.version>2.12.1</log4j.version>
         <spring.version>5.2.2.RELEASE</spring.version>
         <spring-data.version>2.2.2.RELEASE</spring-data.version>
-        <hibernate.version>5.4.9.Final</hibernate.version>
+        <hibernate.version>5.4.24.Final</hibernate.version>
 
         <spring-boot-dependencies.version>2.2.2.RELEASE</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>Hoxton.RELEASE</spring-cloud-dependencies.version>
